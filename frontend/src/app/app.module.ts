@@ -13,9 +13,11 @@ import {RouterModule} from "@angular/router";
 import {RegisterComponent} from "./register.component";
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from "@angular/forms";
+import {LoginComponent} from "./login.component";
 
 const appRoutes = [
-  {path:'register',component:RegisterComponent}
+  {path:'register',component:RegisterComponent},
+  {path:'login',component:LoginComponent}
 ];
 
 @NgModule({
@@ -23,6 +25,7 @@ const appRoutes = [
     AppComponent,
     MessageComponent,
     RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

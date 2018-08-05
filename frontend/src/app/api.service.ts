@@ -21,4 +21,11 @@ export class ApiService{
     })
   }
 
+  loginUser(loginData){
+    this.http.post("http://localhost:3000/register",loginData).subscribe((res:any[]) => {
+      this.messages = res;
+      console.log(this.messages);
+    })
+  }
+
 }
