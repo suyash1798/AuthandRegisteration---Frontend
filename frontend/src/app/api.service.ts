@@ -22,8 +22,9 @@ export class ApiService{
   }
 
   loginUser(loginData){
-    this.http.post("http://localhost:3000/register",loginData).subscribe((res:any[]) => {
+    this.http.post("http://localhost:3000/login",loginData).subscribe((res:any[]) => {
       this.messages = res;
+      localStorage.setItem('token',res.token);
       console.log(this.messages);
     })
   }

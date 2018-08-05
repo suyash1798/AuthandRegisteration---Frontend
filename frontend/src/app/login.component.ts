@@ -19,7 +19,7 @@ import {ApiService} from "./api.service";
           <mat-form-field class="example-full-width">
             <input matInput [(ngModel)]="loginData.password" name="password" placeholder="password" type="password">
           </mat-form-field>
-          <button mat-raised-button (click)="logIt()">Register</button>
+          <button mat-raised-button (click)="post()">Register</button>
         </form>
       </mat-card-content>
     </mat-card>

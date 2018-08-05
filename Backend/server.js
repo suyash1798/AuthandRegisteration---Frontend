@@ -3,6 +3,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
+const jwt = require('jwt-simple');
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -43,6 +45,25 @@ app.post('/register',(req,res)=>{
    })
    console.log(userData.email);
    res.sendStatus(200);
+});
+
+app.post('/login',async (req,res)=>{
+    let userData = req.body;
+    let user = await User.findOne({email:userData.email});
+
+    if(!user){
+        return res.status(401).send({message:'Email or Password Invalid'});
+    }
+
+    if(userData.password != user.password){
+       return res.status(401).send({message:"Email or Password Invalid"})
+    }
+
+    let payload = {}
+
+    let token = jwt.encode(payload,'123456')
+
+    res.status(200).send({token});
 });
 
 mongoose.connect('mongodb://suyash:suyash1234@ds113442.mlab.com:13442/meanstackauth',{ useNewUrlParser: true } ,(err)=>{
