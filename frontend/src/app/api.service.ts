@@ -13,4 +13,12 @@ export class ApiService{
       console.log(this.messages);
     })
   }
+
+  sendUserRegistration(regData){
+    this.http.post("http://localhost:3000/register",regData).subscribe((res:any[]) => {
+      this.messages = res;
+      console.log(this.messages);
+    })
+  }
+
 }

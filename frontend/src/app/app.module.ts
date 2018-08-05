@@ -8,18 +8,32 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MessageComponent} from "./messages.component";
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {RouterModule} from "@angular/router";
+import {RegisterComponent} from "./register.component";
+import {MatInputModule} from '@angular/material/input';
+import {FormsModule} from "@angular/forms";
+
+const appRoutes = [
+  {path:'register',component:RegisterComponent}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    MessageComponent
+    MessageComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    MatInputModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
