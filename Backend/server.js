@@ -47,6 +47,16 @@ app.post('/register',(req,res)=>{
    res.sendStatus(200);
 });
 
+app.get('/users',async (req,res)=>{
+    try{
+        let users = await User.find({});
+        res.send(users);
+        }catch(error){
+           console.log(error);
+           res.sendStatus(500);
+        }
+});
+
 app.post('/login',async (req,res)=>{
     let userData = req.body;
     let user = await User.findOne({email:userData.email});
@@ -64,6 +74,16 @@ app.post('/login',async (req,res)=>{
     let token = jwt.encode(payload,'123456')
 
     res.status(200).send({token});
+});
+
+app.get('/profile/:id',async(req,res)=>{
+   try{
+       let user = await User.findById(req.params.id,'-password -_v');
+       res.send(user);
+   }catch(error){
+       console.log(error);
+       res.sendStatus(500);
+}
 });
 
 mongoose.connect('mongodb://suyash:suyash1234@ds113442.mlab.com:13442/meanstackauth',{ useNewUrlParser: true } ,(err)=>{

@@ -7,10 +7,18 @@ export class ApiService{
   constructor(private http:HttpClient){}
 
   messages = [];
+  users = [];
+
   getMessage(){
     this.http.get("http://localhost:3000/posts").subscribe((res:any[]) => {
       this.messages = res;
       console.log(this.messages);
+    })
+  }
+
+  getUsers(){
+    this.http.get('http://localhost:3000/users').subscribe((res:any[])=>{
+      this.users = res;
     })
   }
 

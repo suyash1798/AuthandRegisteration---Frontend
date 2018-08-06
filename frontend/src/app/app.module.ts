@@ -14,10 +14,13 @@ import {RegisterComponent} from "./register.component";
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./login.component";
+import {UsersComponent} from "./users.component";
 
 const appRoutes = [
   {path:'register',component:RegisterComponent},
-  {path:'login',component:LoginComponent}
+  {path:'login',component:LoginComponent},
+  {path:'users',component:UsersComponent},
+  {path:'profile/:id',component:UsersComponent}
 ];
 
 @NgModule({
@@ -25,7 +28,8 @@ const appRoutes = [
     AppComponent,
     MessageComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
